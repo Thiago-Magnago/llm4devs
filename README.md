@@ -1,62 +1,30 @@
-# LLM4Devs
+# LLM4Devs - RAG (Retrieval Augmented Generation)
 
-Olá! Que honra ter você conosco no Bootcamp LLM4Devs! Espero que o bootcamp seja muito útil na sua jornada na criação de aplicações baseadas em LLMs.
+Este projeto foi realizado no Bootcamp LLM4Devs, conduzido pelo [Gustavo Pinto](https://gustavopinto.org/), da [ML4SE](https://ml4se.substack.com/).
 
-Antes de começarmos, vamos nos certificar que você com seu ambiente pronto para o bootcamp -- e assim focamos nosso tempo de sábado para as atividades *hands on*.
+Foi desenvolvido um chat para responder questões sobre uma base de dados própria. No caso, utilizei uma página da web com uma [notícia específica](https://g1.globo.com/mundo/noticia/2024/05/20/ebrahim-raisi-presidente-do-ira-morre-em-queda-de-helicoptero-diz-tv-estatal.ghtml).
+
+![alt text](image.png)
+
+No trabalho empregou-se a técnica de Retrieval Augmented Generation (RAG) na construção da solução, utilizando-se de recursos como APIs da OpenAI para vetorização (embeddings) e geração de texto (chat), banco de dados PostgreSQL e framework [LangChain](https://python.langchain.com/v0.1/docs/modules/data_connection/). Foram desenvolvidas as seguintes etapas:
+
+![alt text](image-1.png)
 
 ## Ferramentas
 
-Para esse bootcamp, iremos utilizar Python como linguagem de programação e o Postgres como banco de dados. Certifique-se que você conseguiu instalar e configurar ambos. Versões recomendadas:
+Foi utilizado Python como linguagem de programação e o Postgres como banco de dados:
 
 - Python: 3.10 ou superior
+- Ambiente virtual: Para não criar confusão com as bibliotecas do sistema e as utilizadas no bootcamp, foi criado um ambiente virtual separado e instaladas as dependencias do Python.
 - PostgreSQL: 15 ou superior
-
-Todas as demais dependencias serão instaladas via `pip`.
-
-## Crie um ambiente virtual e instale as dependencias do Python
-
-Para não criar uma confusão com as bibliotecas do seu sistema e as que serão utilizadas no bootcamp, é recomendado criar um ambiente virtual separado.
-
-```
-python3 -m venv env
-source env/bin/activate
-```
-
-Em seguida, instale as bibliotecas: 
-
-```
-pip install -r requirements.txt
-```
-
-## Instale a extensão pgvector do Postgres
-
-O PGVector é uma ferramenta muito importante para criação de aplicações baseadas em LLMs, uma vez que ele fornece novos tipos de armazenamento e busca de dados. Para instalá-lo, siga as instruções abaixo.
-
-Para usuários Linux, o pgvector pode ser instalado via APT:
-
-```
-sudo apt install postgresql-16-pgvector
-```
-
-Para usuários macOS, pode-se utilizar o homebrew: 
-
-```
-brew install pgvector
-```
-
-Para demais métodos de instalação, consulte o [repositório oficial](https://github.com/pgvector/pgvector).
-
-### Crie uma base de dados no postgres
-
-Uma vez instalado, crie uma base de dados e uma tabela usando o tipo `VECTOR`. Primeiro, se conecte via linha de comando no seu banco de dados;
-
+Foi utilizada também a extensão pgvector do Postgres. O [PGVector](https://github.com/pgvector/pgvector) é uma ferramenta muito importante para criação de aplicações baseadas em LLMs, uma vez que ele fornece novos tipos de armazenamento e busca de dados.
+- Base de dados no postgres: Foi criada uma base de dados e uma tabela usando o `VECTOR`. Primeiro, foi realizada a conexão via linha de comando no banco de dados:
 
 ```bash
 $ psql -h 127.0.0.1 -U postgres
 ```
 
-Uma vez conectado, rode o script abaixo para criar a base e a tabela.
-
+Uma vez conectado, foi executado o script abaixo para criar a base e a tabela.
 
 ```sql 
 CREATE DATABASE bootcamp_llm;
@@ -75,19 +43,19 @@ CREATE TABLE IF NOT EXISTS embeddings (
 );
 ```
 
-## Configure acesso a OpenAI
+## Acesso a OpenAI
 
-Muito do nosso trabalho será baseado nas APIs da OpenAI. Para isso, você precisa criar uma chave para acessar a [plataforma da OpenAI](https://platform.openai.com/). 
+PAra ter acesso às APIs da OpenAI, foi preciso criar uma chave própria para acessar a [plataforma da OpenAI](https://platform.openai.com/). 
 
-Em seguida, adicione a variavel de ambiente `OPENAI_API_KEY` dentro do arquivo `.env`.
+A chave obtida foi adicionada à variavel de ambiente `OPENAI_API_KEY` dentro do arquivo `.env`.
 
 ```
 OPENAI_API_KEY = "<CHAVE>"
 ```
 
-## Rode a interface web
+## Interface web
 
-Por fim, para garantir que a configuracao foi bem sucedida, rode o seguinte comando:
+Por fim, para executar a aplicação localmente, basta rodar o seguinte comando:
 
-- `python3 $PATH/bootcamp-llm4devs/backend/core/main.py`
+- `python3 $PATH/bootcamp-llm4devs/core/main.py`
 
