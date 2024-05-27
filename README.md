@@ -14,6 +14,7 @@ No trabalho empregou-se a técnica de Retrieval Augmented Generation (RAG) na co
 
 Foi utilizado Python como linguagem de programação e o Postgres como banco de dados:
 
+- Ambiente/Sistema Operacional: WSL2 (Windows Subsystem for Linux) - Ubuntu-22.04
 - Python: 3.10 ou superior
 - Ambiente virtual: Para não criar confusão com as bibliotecas do sistema e as utilizadas no bootcamp, foi criado um ambiente virtual separado e instaladas as dependencias do Python.
 - PostgreSQL: 15 ou superior
