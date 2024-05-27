@@ -17,6 +17,7 @@ Foi utilizado Python como linguagem de programação e o Postgres como banco de 
 - Python: 3.10 ou superior
 - Ambiente virtual: Para não criar confusão com as bibliotecas do sistema e as utilizadas no bootcamp, foi criado um ambiente virtual separado e instaladas as dependencias do Python.
 - PostgreSQL: 15 ou superior
+
 Foi utilizada também a extensão pgvector do Postgres. O [PGVector](https://github.com/pgvector/pgvector) é uma ferramenta muito importante para criação de aplicações baseadas em LLMs, uma vez que ele fornece novos tipos de armazenamento e busca de dados.
 - Base de dados no postgres: Foi criada uma base de dados e uma tabela usando o `VECTOR`. Primeiro, foi realizada a conexão via linha de comando no banco de dados:
 
